@@ -1,13 +1,15 @@
-# AI-Powered Career Coach
+# ⚡ AI-POWERED CAREER COACH & INTERVIEW SUITE
 
-> **Autonomous Career Engineering Suite**  
-> *Resume Analyzer • Job Matcher • Skill Gap Analyzer • AI Interview Coach*
+![Mobile](https://img.shields.io/badge/Mobile-React%20Native%20%7C%20Expo%2057-000000?style=flat&logo=expo&logoColor=white)
+![Frontend](https://img.shields.io/badge/Frontend-React%2018%20%7C%20Tailwind%20CSS-38B2AC?style=flat&logo=react&logoColor=white)
+![Backend](https://img.shields.io/badge/Backend-Node.js%20%7C%20Express-339933?style=flat&logo=node.js&logoColor=white)
+![AI Engine](https://img.shields.io/badge/AI%20Engine-Google%20Gemini%20API-4285F4?style=flat&logo=google&logoColor=white)
+![Database](https://img.shields.io/badge/Database-MongoDB%20%7C%20Mongoose-47A248?style=flat&logo=mongodb&logoColor=white)
+![ATS Engine](https://img.shields.io/badge/ATS%20Engine-PDF%20Parser%20%26%20Rubrics-E11D48?style=flat)
+![Testing](https://img.shields.io/badge/Tests-11%2F11%20Passing%20%E2%9C%93-brightgreen?style=flat)
+![License](https://img.shields.io/badge/License-MIT-0284C7?style=flat)
 
----
-
-## Overview
-
-**AI-Powered Career Coach** is a modern full-stack web application engineered to empower engineering students and technical job seekers. The platform parses PDF resumes, calculates an objective **Resume Quality Score (0–100)**, matches credentials against complex job descriptions using a transparent weighted scoring algorithm, pinpoints prioritized skill gaps with week-by-week learning roadmaps, and conducts interactive, multi-mode AI mock interviews with instantaneous rubric grading.
+> A production-grade, full-stack career engineering suite and dedicated native mobile application built for iOS & Android (`React Native` / `Expo SDK 57`) and Web (`React 18` + `Vite`). Features real-time ATS PDF resume parsing, weighted job description compatibility matching, skill gap prioritization with 4-week learning roadmaps, and an interactive AI mock interview coach with strict 4-criteria rubric grading powered by `Google Gemini API` and `Node.js`.
 
 ---
 
