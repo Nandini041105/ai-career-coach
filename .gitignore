@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Production
+dist/
+build/
+.expo/
+.metro-health-check*
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Uploads and temporary files
+uploads/*
+!uploads/.gitkeep
+temp/
+logs/
+*.log
+
+# Editor and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
