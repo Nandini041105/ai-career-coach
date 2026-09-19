@@ -1,6 +1,42 @@
 import JobDescription from '../models/JobDescription.js';
 import JobMatch from '../models/JobMatch.js';
+import Resume from '../models/Resume.js';
 import { extractJobDescriptionDetails } from '../services/matchingService.js';
+import { getRecommendedJobs } from '../services/jobSearchService.js';
+
+export const getJobRecommendations = async (req, res, next) => {
+  try {
+    const { location = '', role = '', workMode = '', search = '' } = req.query;
+
+    // Fetch candidate's active resume (most recent)
+    const resume = await Resume.findOne({ userId: req.user._id }).sort({ createdAt: -1 });
+
+    // Determine target role: from query param, or candidate profile, or default
+    const effectiveRole = role || req.user.targetRole || resume?.targetRole || '';
+
+    const recommendations = await getRecommendedJobs({
+      location,
+      role: effectiveRole,
+      workMode,
+      search,
+      user: req.user,
+      resume
+    });
+
+    res.status(200).json({
+      success: true,
+      filters: {
+        location,
+        role: effectiveRole,
+        workMode,
+        search
+      },
+      ...recommendations
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 export const createJobDescription = async (req, res, next) => {
   try {

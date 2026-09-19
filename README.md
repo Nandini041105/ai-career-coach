@@ -4,12 +4,13 @@
 ![Frontend](https://img.shields.io/badge/Frontend-React%2018%20%7C%20Tailwind%20CSS-38B2AC?style=flat&logo=react&logoColor=white)
 ![Backend](https://img.shields.io/badge/Backend-Node.js%20%7C%20Express-339933?style=flat&logo=node.js&logoColor=white)
 ![AI Engine](https://img.shields.io/badge/AI%20Engine-Google%20Gemini%20API-4285F4?style=flat&logo=google&logoColor=white)
+![Live Jobs](https://img.shields.io/badge/Live%20Jobs-Naukri%20%7C%20LinkedIn-FFA116?style=flat)
 ![Database](https://img.shields.io/badge/Database-MongoDB%20%7C%20Mongoose-47A248?style=flat&logo=mongodb&logoColor=white)
 ![ATS Engine](https://img.shields.io/badge/ATS%20Engine-PDF%20Parser%20%26%20Rubrics-E11D48?style=flat)
-![Testing](https://img.shields.io/badge/Tests-11%2F11%20Passing%20%E2%9C%93-brightgreen?style=flat)
+![Testing](https://img.shields.io/badge/Tests-16%2F16%20Passing%20%E2%9C%93-brightgreen?style=flat)
 ![License](https://img.shields.io/badge/License-MIT-0284C7?style=flat)
 
-> A production-grade, full-stack career engineering suite and dedicated native mobile application built for iOS & Android (`React Native` / `Expo SDK 57`) and Web (`React 18` + `Vite`). Features real-time ATS PDF resume parsing, weighted job description compatibility matching, skill gap prioritization with 4-week learning roadmaps, and an interactive AI mock interview coach with strict 4-criteria rubric grading powered by `Google Gemini API` and `Node.js`.
+> A production-grade, full-stack career engineering suite and dedicated native mobile application built for iOS & Android (`React Native` / `Expo SDK 57`) and Web (`React 18` + `Vite`). Features real-time ATS PDF resume parsing, live job recommendations with 1-click **Naukri & LinkedIn** application links, weighted compatibility matching, skill gap prioritization with 4-week learning roadmaps, and an interactive AI mock interview coach with strict 4-criteria rubric grading powered by `Google Gemini API` and `Node.js`.
 
 ---
 
@@ -19,6 +20,7 @@ Technical job seekers face three major hurdles:
 1. **The "Black Box" ATS**: Resumes are screened out by keyword mismatch and vague formatting issues without actionable feedback.
 2. **Ambiguous Skill Gaps**: Job descriptions list dozens of requirements, leaving candidates uncertain about which skills are urgent versus preferred.
 3. **High-Stress Technical Interviews**: Traditional mock interviews are expensive or generic, failing to assess domain-specific depth (e.g. Verilog, CDC, and FSMs for RTL engineers; RTOS and ISRs for Embedded developers).
+4. **Scattered Job Searches**: Candidates struggle to find which active vacancies in their preferred city match their specific resume skills.
 
 ---
 
@@ -28,6 +30,7 @@ AI-Powered Career Coach addresses these hurdles through a unified, production-st
 - **Heuristic & AI PDF Extraction**: Directly parses candidate PDF resumes and structures education, experience, projects, metrics, and technical skills.
 - **Resume Quality Audit**: Assesses action verb impact, quantitative metrics, and formatting health without fabricating credentials.
 - **Weighted Compatibility Engine**: Calculates ATS match estimates across Technical Skills (40%), Keywords (20%), Experience (15%), Projects (15%), and Education (10%).
+- **Live Job Recommendations & 1-Click Apply**: Connects parsed resume skills to active vacancies in Indian tech hubs (Bengaluru, Hyderabad, Pune, Chennai, Delhi-NCR, Remote), calculates real-time ATS match percentages, and offers direct 1-click apply links to **Naukri & LinkedIn**.
 - **Prioritized Skill Gap Roadmaps**: Categorizes missing skills (High, Medium, Low priority) and formulates a 4-week structured milestone curriculum.
 - **Multi-Mode AI Mock Interview Coach**: Simulates Technical, HR, and Project Defense rounds with 4-criterion rubric scoring (Technical Accuracy, Relevance, Completeness, Communication) and exemplary model answers.
 

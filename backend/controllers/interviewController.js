@@ -14,7 +14,12 @@ export const startInterview = async (req, res, next) => {
       questionSource = 'role',
       totalQuestions = 5,
       resumeId,
-      jobDescriptionId
+      jobDescriptionId,
+      jobTitle,
+      company,
+      requiredSkills,
+      jobDescriptionText,
+      targetRole: bodyRole
     } = req.body;
 
     let resume = null;
@@ -27,17 +32,31 @@ export const startInterview = async (req, res, next) => {
     let jobDescription = null;
     if (jobDescriptionId) {
       jobDescription = await JobDescription.findOne({ _id: jobDescriptionId, userId: req.user._id });
+    } else if (jobTitle || company || requiredSkills) {
+      // Create a persistent JobDescription from the live vacancy
+      jobDescription = await JobDescription.create({
+        userId: req.user._id,
+        company: company || 'Target Employer',
+        title: jobTitle || bodyRole || 'Target Position',
+        targetRole: bodyRole || req.user.targetRole || 'Software Engineer',
+        rawText: jobDescriptionText || `Position: ${jobTitle} at ${company}. Required skills: ${(requiredSkills || []).join(', ')}`,
+        extractedData: {
+          requiredSkills: Array.isArray(requiredSkills) ? requiredSkills : [],
+          preferredSkills: []
+        }
+      });
     } else if (questionSource === 'job' || questionSource === 'mixed') {
       jobDescription = await JobDescription.findOne({ userId: req.user._id }).sort({ createdAt: -1 });
     }
 
-    const targetRole = req.user.targetRole || jobDescription?.targetRole || 'Software Engineer';
+    const effectiveQuestionSource = (jobTitle || jobDescriptionId) ? 'job' : questionSource;
+    const targetRole = bodyRole || jobDescription?.targetRole || req.user.targetRole || 'Software Engineer';
 
     // Generate questions
     const questions = await generateInterviewQuestions({
       targetRole,
       interviewType,
-      questionSource,
+      questionSource: effectiveQuestionSource,
       totalQuestions: Number(totalQuestions) || 5,
       resume,
       jobDescription
@@ -49,7 +68,7 @@ export const startInterview = async (req, res, next) => {
       jobDescriptionId: jobDescription?._id || null,
       targetRole,
       interviewType,
-      questionSource,
+      questionSource: effectiveQuestionSource,
       totalQuestions: questions.length,
       currentQuestionIndex: 0,
       questions,

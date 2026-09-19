@@ -131,8 +131,10 @@ export const fallbackInterviewQuestions = (targetRole, interviewType, questionSo
   // Job description based customizations if available
   if (questionSource === 'job' && jobDescription?.extractedData?.requiredSkills?.length > 0) {
     const skills = jobDescription.extractedData.requiredSkills;
+    const company = jobDescription.company && jobDescription.company !== 'Target Employer' ? jobDescription.company : 'the hiring company';
+    const title = jobDescription.title || 'role';
     const jobSpecificQuestions = skills.map((skill, idx) => ({
-      questionText: `The job description emphasizes expertise in "${skill}". How have you implemented or applied ${skill} in past projects, and what technical challenges or trade-offs did you encounter?`,
+      questionText: `For the ${title} opportunity at ${company}, deep expertise in "${skill}" is essential. How have you implemented or applied ${skill} in past projects, and what technical challenges or trade-offs did you encounter?`,
       category: `${skill} / Job Requirement`,
       difficulty: idx >= 2 ? 'Hard' : 'Medium'
     }));

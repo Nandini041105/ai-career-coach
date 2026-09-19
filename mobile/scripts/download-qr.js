@@ -15,7 +15,7 @@ async function downloadQR() {
     fs.writeFileSync(dest1, buffer);
     console.log(`[QR] Saved to: ${dest1}`);
 
-    const brainDir = 'C:\\Users\\guess\\.gemini\\antigravity-ide\\brain\\a958735d-282a-454d-a6a4-4839ee6b624b';
+    const brainDir = 'C:\\Users\\guess\\.gemini\\antigravity-ide\\brain\\d5687d68-8e99-4722-af1c-0347d886a2cd';
     if (fs.existsSync(brainDir)) {
       const dest2 = path.join(brainDir, 'expo_qr.png');
       fs.writeFileSync(dest2, buffer);

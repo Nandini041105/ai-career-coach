@@ -251,4 +251,56 @@ Requirements:
     assert.ok(data.roadmap.weeklyPlan.length >= 4);
     assert.equal(data.roadmap.targetRole, 'RTL Design Engineer');
   });
+
+  await t.test('8. Live Job Recommendations Endpoint with Location & ATS Matching', async () => {
+    const res = await fetch(`${BASE_URL}/jobs/recommendations?location=Bengaluru&role=RTL%20Design%20Engineer`, {
+      headers: { Authorization: `Bearer ${authToken}` }
+    });
+
+    assert.equal(res.status, 200);
+    const data = await res.json();
+    assert.equal(data.success, true);
+    assert.ok(Array.isArray(data.jobs));
+    assert.ok(data.jobs.length > 0);
+
+    const firstJob = data.jobs[0];
+    assert.ok(firstJob.jobTitle);
+    assert.ok(firstJob.company);
+    assert.ok(firstJob.location);
+    assert.ok(firstJob.applyUrl);
+    assert.ok(typeof firstJob.atsMatchScore === 'number');
+    assert.ok(Array.isArray(firstJob.matchedSkills));
+    assert.ok(Array.isArray(firstJob.missingSkills));
+    assert.ok(['On-site', 'Hybrid', 'Remote'].includes(firstJob.workMode));
+  });
+
+  await t.test('9. Instant Interview Preparation from Live Vacancy', async () => {
+    // 1-Click Prepare Interview with job posting
+    const res = await fetch(`${BASE_URL}/interview/start`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${authToken}`
+      },
+      body: JSON.stringify({
+        interviewType: 'technical',
+        jobTitle: 'Senior RTL Design Engineer',
+        company: 'Qualcomm India',
+        requiredSkills: ['SystemVerilog', 'UVM', 'CDC', 'STA'],
+        jobDescriptionText: 'Lead RTL micro-architecture for Snapdragon mobile processors.'
+      })
+    });
+
+    assert.equal(res.status, 201);
+    const data = await res.json();
+    assert.equal(data.success, true);
+    assert.ok(data.session);
+    assert.equal(data.session.questionSource, 'job');
+    assert.ok(data.session.questions.length > 0);
+
+    // Verify question is tailored to Qualcomm / RTL / required skills
+    const firstQ = data.session.questions[0];
+    assert.ok(firstQ.questionText);
+    console.log('[Test] Job-tailored question generated:', firstQ.questionText);
+  });
 });

@@ -104,7 +104,8 @@ export const jobApi = {
   create: (data) => api.post('/jobs', data),
   getAll: () => api.get('/jobs'),
   getById: (id) => api.get(`/jobs/${id}`),
-  delete: (id) => api.delete(`/jobs/${id}`)
+  delete: (id) => api.delete(`/jobs/${id}`),
+  getRecommendations: (params) => api.get('/jobs/recommendations', { params })
 };
 
 // Match Endpoints

@@ -9,6 +9,7 @@ import { DashboardScreen } from '../screens/dashboard/DashboardScreen.js';
 import { ResumeUploadScreen } from '../screens/resume/ResumeUploadScreen.js';
 import { ResumeScoreScreen } from '../screens/resume/ResumeScoreScreen.js';
 import { JobMatcherScreen } from '../screens/jobs/JobMatcherScreen.js';
+import { JobRecommendationsScreen } from '../screens/jobs/JobRecommendationsScreen.js';
 import { RoadmapScreen } from '../screens/jobs/RoadmapScreen.js';
 import { InterviewHubScreen } from '../screens/interview/InterviewHubScreen.js';
 import { MockInterviewScreen } from '../screens/interview/MockInterviewScreen.js';
@@ -32,7 +33,9 @@ const ResumeNavigator = () => (
 const JobsNavigator = () => (
   <JobsStackNav.Navigator screenOptions={{ headerShown: false }}>
     <JobsStackNav.Screen name="JobMatcher" component={JobMatcherScreen} />
+    <JobsStackNav.Screen name="JobRecommendations" component={JobRecommendationsScreen} />
     <JobsStackNav.Screen name="Roadmap" component={RoadmapScreen} />
+    <JobsStackNav.Screen name="MockInterview" component={MockInterviewScreen} />
   </JobsStackNav.Navigator>
 );
 

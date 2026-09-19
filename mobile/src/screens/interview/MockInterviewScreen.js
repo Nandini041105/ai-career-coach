@@ -123,6 +123,14 @@ export const MockInterviewScreen = ({ route, navigation }) => {
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
         >
+          {session?.questionSource === 'job' && (
+            <View style={styles.jobSessionBadge}>
+              <Text style={styles.jobSessionBadgeText}>
+                🎯 Target Vacancy: {session.targetRole}
+              </Text>
+            </View>
+          )}
+
           {/* Question Card */}
           <View style={styles.questionCard}>
             <View style={styles.questionHeader}>
@@ -420,5 +428,20 @@ const styles = StyleSheet.create({
   },
   nextButton: {
     marginTop: spacing.md
+  },
+  jobSessionBadge: {
+    backgroundColor: colors.surfaceElevated,
+    borderColor: colors.accent,
+    borderWidth: 1,
+    borderRadius: radii.pill,
+    paddingHorizontal: spacing.md,
+    paddingVertical: 5,
+    marginBottom: spacing.sm,
+    alignSelf: 'flex-start'
+  },
+  jobSessionBadgeText: {
+    color: colors.primaryLight,
+    fontSize: typography.sizes.xs,
+    fontWeight: typography.weights.semibold
   }
 });
